@@ -19,6 +19,8 @@
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
             $_SESSION['username'] = $username;
+            $row = $result->fetch_assoc();
+            $_SESSION['role'] = $row['role'];
             header("Location: dashboard.php");
         } else {
             echo "<div class='form login'>

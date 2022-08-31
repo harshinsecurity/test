@@ -11,10 +11,7 @@
   <?php
     require('db.php');
     include("auth_session.php");
-    $sessionUsername = $_SESSION["username"];
-    // $query = "SELECT FROM users WHERE username='$username'";
-    // $result = mysqli_query($con, $query);
-    $sessionRole = $_SESSION['role'];
+    $sessionRole = $_SESSION["role"];
     if (isset($_GET['submit'])) {
       $conn = new mysqli("localhost", "root", "", "web");
       $username = $_GET["search"];
@@ -23,13 +20,12 @@
         
       if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-          echo "<b>Name</b>: ". $row['username'] . "<br />";
-          echo "<b>Role</b>: ". $row['role'] . "<br />";
-          echo "<b>Session User</b>: ". $sessionUsername . "<br />";
-          echo "<b>Session Role</b>: ". $sessionRole . "<br />";
-          // if($sessionRole == "admin"){
-          //   echo "<p class='btn btn-warning'>Delete</p>"
-          // }
+          echo "<div class='del-wrap'><b>Name</b>: ". $row['username'] . "&nbsp;&nbsp; <b>Role</b>: ". $row['role'] . "</div>";
+          if($sessionRole === "admin"){
+            {
+              echo "<div class='del-wrap'><a class='delete-user' href='delete_user.php?uid={$row['id']}'>Delete</a> <br /> <hr /></div>";
+            }
+          }
         }
       } else {
         echo "Sorry, no match found for ".$username."  ";

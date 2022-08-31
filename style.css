@@ -313,3 +313,20 @@ form, fieldset{
 	text-align: center;
 	border-radius: 4px;
 }
+
+.del-wrap .delete-user {
+	color: red;
+	background-color: #bedbe5;
+    border: none;
+    padding: 6px 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px;
+	cursor: pointer;
+}
+
+.del-wrap {
+	text-align: center;
+	align-items: center;
+	padding: 1%;
+}
